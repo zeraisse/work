@@ -7,6 +7,8 @@
 # Allow only these two files at project root
 !/dashboard.py
 !/exercices.ipynb
+!/README.md
+!/requirements.txt
 
 # If you have other notebooks to keep, unignore them explicitly, for example:
 # !/TD_pySpark.ipynb
