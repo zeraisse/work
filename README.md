@@ -1,4 +1,4 @@
-# Projet Spark - Exercices
+# Projet Kafka/Spark - Exercices
 
 Courte description
 - Ensemble d'exercices et d'exemples pour travailler avec Kafka, Spark Structured Streaming, et la sortie vers HDFS.
