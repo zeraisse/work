@@ -1,0 +1,56 @@
+# Global: ignore everything by default
+/*
+
+# Unignore the gitignore itself
+!.gitignore
+
+# Allow only these two files at project root
+!/dashboard.py
+!/exercices.ipynb
+
+# If you have other notebooks to keep, unignore them explicitly, for example:
+# !/TD_pySpark.ipynb
+
+# Unignore directories if you want to push specific files within them (none by default)
+# Example to allow a specific file inside model/ uncomment and set the path:
+# !/model/somefile.ipynb
+
+# Common exclusions (these will be ignored even if they match above because of the leading slash rule):
+# Python cache and env
+__pycache__/
+*.py[cod]
+*$py.class
+env/
+venv/
+.venv/
+
+# Jupyter checkpoints and outputs
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+
+# Spark / Hadoop temporary or checkpoint directories
+checkpoint/
+checkpoint_hdfs_write/
+
+# Model or data folders
+model/
+data/
+output/
+
+# Kafka / other message system state
+*.offsets
+
+# IDE/editor temp files
+*~
+*.swp
