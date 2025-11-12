@@ -2,6 +2,35 @@ import streamlit as st
 import pandas as pd
 from pyspark.sql import SparkSession
 from pyspark.sql.utils import AnalysisException
+from kafka import KafkaConsumer
+import json
+
+def fetch_latest_weather():
+    consumer = KafkaConsumer(
+        'weather_transformed',
+        bootstrap_servers=['kafka:9092'],
+        auto_offset_reset='latest',
+        consumer_timeout_ms=5000,
+        value_deserializer=lambda m: json.loads(m.decode('utf-8'))
+    )
+    
+    messages = []
+    for msg in consumer:
+        messages.append(msg.value)
+        if len(messages) >= 20:
+            break
+
+    consumer.close()
+    return pd.DataFrame(messages)
+
+if st.button("Rafraîchir les données en direct"):
+    live_data = fetch_latest_weather()
+    if not live_data.empty:
+        st.subheader("Météo en direct (derniers messages Kafka)")
+        st.dataframe(live_data[['city', 'country', 'temperature', 'windspeed', 'event_time']])
+    else:
+        st.write("Aucune donnée en direct reçue.")
+
 
 spark = SparkSession.builder.appName("WeatherDashboard").getOrCreate()
 
